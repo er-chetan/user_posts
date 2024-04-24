@@ -1,0 +1,30 @@
+.screen{
+    background-color:#0F0F3E;
+    height: 100vh;
+}
+.d-block{
+    display: block;
+}
+.d-none{
+    display: none;
+}
+.back-light-blue{
+    background-color: #6F6AF8;
+}
+.back-blue{
+    background-color: #1E1E66;
+}
+.back-dark-blue{
+    background-color: #2D2B7C;
+}
+.manage{
+    width: 75%;
+    transform: translateY(15%);
+}
+.showitem:hover{
+    background-color:#2D2B7C;
+    transition: all 0.4s ease 0.1s;
+}
+.add-color{
+    background-color: #2D2B7C !important;
+}

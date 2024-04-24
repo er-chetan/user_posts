@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body class="screen text-white">
+    <div class="container-fluid pt-5">
+        <h1 class="text-center fw-bold">Here is all post!!!</h1>
+        <div class="row d-flex-wrap justify-content-center align-item-center mt-5 gap-4">
+            {% for i in post_data_all %}
+                <div class="col-3 p-4 bg-danger rounded ">
+                    <h2 class="fw-bold my-3 text-uppercase">{{i.title}}</h2>
+                    <h5 class="fw-bold text-uppercase">{{i.category}}</h5>
+                    <p>{{i.description}}</p>
+                </div>
+            {% endfor %}    
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body class="screen text-white">
+    <div class="container-fluid pt-5">
+            <h1 class="text-center">Update Your post</h1>
+            <form action="/updatelist/{{ updaterow.id }}" method="post">
+                {% csrf_token %}
+                <div class="row justify-content-center align-item-center mt-5">
+                    <div class="col-2 bg-danger text-center">
+                        <h4 class="mt-3">ID is {{ updaterow.id }}</h4>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" name="title" id="" value="{{ updaterow.title }}" class="p-3 w-100">
+                    </div>
+                    <div class="col-2">
+                        <select name="category" id="" class="w-100 p-3">
+                            <option value="{{updaterow.category}}">previous is {{updaterow.category}}</option>
+                            {% for i in cat_data_all %}
+                                <option value="{{ i.addcategory }}">{{i.addcategory}}</option>
+                            {% endfor %}    
+                        </select>
+                    </div>
+                    <div class="col-3" >
+                        <input type="text" name="description" id="" value="{{updaterow.description}}" class="w-100 p-3">
+                    </div>   
+                    <div class="col-1 ">
+                        <button type="submit" class="bg-danger text-white p-3 w-100 border-0">submit</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+</body>
+</html>

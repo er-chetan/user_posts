@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+
+</head>
+<body class="screen">
+    
+    <div class="container back-blue manage py-4">
+        <div class="row d-flex justify-content-center align-item-center gap-4">
+            <div class="col-3">
+                <button class="w-100 px-3 py-4 back-light-blue  fw-bold text-white border-0 mb-1"><a href="/addp/" class="text-decoration-none text-white">ADD POST</a></button>
+                <button class="w-100 px-3 py-4 back-light-blue fw-bold text-white border-0 mb-1 showitem" id="btn1">MANAGE POST</button>
+                <button class="w-100 px-3 py-4 back-light-blue fw-bold text-white border-0 mb-1 "><a href="/addc/" class="text-decoration-none text-white">ADD CATEGORY</a></button>
+                <button class="w-100 px-3 py-4 back-light-blue fw-bold text-white border-0 mb-1 showitem" id="btn2">MANAGE CATEGORY</button>
+                <button class="w-100 px-3 py-4 back-light-blue fw-bold text-white border-0 mb-1 showitem" id="btn3">ADD USER</button>
+                <button class="w-100 px-3 py-4 back-light-blue fw-bold text-white border-0 mb-1 showitem" id="btn4">MANAGE USER</button>
+            </div>
+            
+            <!-- manage-post -->
+            <div class="col-8 d-block text-white" id="itembtn1">
+                <h3 class="fw-bold ms-2">Manage Posts</h3>
+                <div class="row d-flex justify-content-center align-item-center gap-1 mt-4">
+                    <div class="col-5 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Title</h6> 
+                    </div>
+                    <div class="col-2 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Category</h6>
+                    </div>
+                    <div class="col-2 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Edit</h6>
+                    </div>
+                    <div class="col-2 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Delete</h6>
+                    </div>
+                </div>
+
+                <!-- display manage posts -->
+
+                <div class="row d-flex justify-content-center align-item-center gap-1 block-item   ">
+                    {% for i in post_data_all %}
+                    <div class="col-5 p-3 border-1 border-bottom ">
+                        <span class="text-secondary">{{ i.title }}</span>
+                    </div>
+                    <div class="col-2 p-3 border-1 border-bottom">
+                        <span class="text-secondary">{{ i.category }}</span>
+                    </div>
+                    <div class="col-2 p-3 border-1 border-bottom ">
+                        <button class="rounded-2 border-0 px-2 py-1 text-center back-light-blue text-white" ><a href="/fetchrow/{{ i.id }}" class="text-decoration-none text-white">Edit</a></button>
+                    </div>
+                    <div class="col-2 p-3 border-1 border-bottom">
+                        <button class="rounded-2 border-0 px-2 py-1 text-center bg-danger text-white"><a href="/deleterow/{{ i.id }}" class="text-decoration-none text-white">Delete</a></button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+
+            <!-- display manage categoery post -->
+
+            <div class="col-8 d-none" id="itembtn2">
+                <h3 class="fw-bold ms-2 text-white">Manage Category</h3>
+                <div class="row d-flex justify-content-center align-item-center gap-1 mt-4 text-white">
+                    <div class="col-3 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Title</h6> 
+                    </div>
+                    <div class="col-3 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Edit</h6>
+                    </div>
+                    <div class="col-5 p-3 back-dark-blue">
+                        <h6 class="fw-bold">Delete</h6>
+                    </div>
+                </div>
+
+                <!-- display manage category -->
+                <div class="row d-flex justify-content-center align-item-center gap-1 block-item">
+                    {% for i in cat_data_all %}
+                    <div class="col-3 p-3 border-1 border-bottom ">
+                        <span class="text-secondary">{{i.addcategory}}</span>
+                    </div>
+                    <div class="col-3 p-3 border-1 border-bottom ">
+                        <button class="rounded-2 border-0 px-2 py-1 text-center bg-danger text-white"><a href="/fetch_category/{{ i.id }}" class="text-decoration-none text-white">Edit</a></button>
+                    </div>
+                    <div class="col-5 p-3 border-1 border-bottom">
+                        <button class="rounded-2 border-0 px-2 py-1 text-center bg-danger text-white"><a href="/delete_category/{{ i.id }}" class="text-decoration-none text-white">Delete</a></button>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>  
+            <!--  -->
+            <div class="col-8 d-none" id="itembtn3">
+                <h1>item5</h1>
+            </div>
+            <div class="col-8 d-none" id="itembtn4">
+                <h1>item6</h1>
+            </div>
+        </div>
+    </div>    
+    
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

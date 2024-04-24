@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body class="screen text-white">
+    <div class="container-fluid pt-5">
+        <h1 class="text-center">Add Your post</h1>
+        <div class=" w-50 mx-auto text-white" >
+            <form action="/addpost/" method="post">
+                {% csrf_token %}
+                <input type="text" name="title" id="" class="w-100 border-0 rounded p-2 w-100" placeholder="enter title">
+                <select name="category" id="" class="w-100 rounded border-0 text-secondary my-3 p-2">
+                    <option value="title">Title</option>
+                    {% for i in cat_data_all %}
+                        <option value="{{ i.addcategory }}"> {{ i.addcategory}}</option>
+                    {% endfor %}
+                </select>
+                <textarea name="description" id="" cols="30" rows="6" class="w-100 p-2 rounded border-0 mb-3" placeholder="Description"></textarea>
+                <button class="p-2 rounded border-0">Add Post</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
